@@ -1,19 +1,17 @@
-const container = document.querySelector("#container");
+const body = document.querySelector("body");
+let container = document.querySelector("#container");
 
 function createGrid(size) {
     for (let i = 0; i < size; i++) {
         const newRow = document.createElement("div");
-        newRow.style.display = "flex";
-        newRow.style.flex = "1";
+        newRow.classList.add("row");
         newRow.addEventListener("mouseover", function (event) {
             let target = event.target;
             target.style.backgroundColor = "green";
         });
         for (let j = 0; j < size; j++) {
             const newDiv = document.createElement("div");
-            newDiv.style.border = "solid";
-            newDiv.style.flex = "1";
-            // newDiv.addEventListener("mouseover", () => newDiv.style.backgroundColor = "blue");
+            newDiv.classList.add("newDiv");
             newRow.appendChild(newDiv);
         }
         container.appendChild(newRow);
@@ -21,7 +19,28 @@ function createGrid(size) {
 }
 
 
+function getInput(size) {
+    container.innerHTML = "";
+    let input = -1;
+    do {
+        input = parseInt(prompt("Size of grid"));
+    } while (input < 0 || input > 100);
 
 
+    createNewContainer();
+    body.appendChild(container);
+    createGrid(input);
+}
 
-createGrid(16);
+const changeSizeButton = document.querySelector("#changeSizeButton");
+changeSizeButton.addEventListener("click", getInput);
+
+
+function createNewContainer() {
+    container.remove();
+    container = document.createElement("div");
+    container.setAttribute("id", "container");
+}
+
+
+createGrid(64);

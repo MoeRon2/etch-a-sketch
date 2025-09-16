@@ -9,6 +9,23 @@ body {
     border: solid;
     display: flex;
     flex-direction: column;
-    width: 50vw;
-    height: 50vh;
+    flex: auto;
+    width: 60vw;
+    height: 90vh;
+
+}
+
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.newDiv {
+    flex: 1;
+    border: solid;
+}
+
+.paint {
+    background-color: white;
 }
