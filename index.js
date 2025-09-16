@@ -7,7 +7,8 @@ function createGrid(size) {
         newRow.classList.add("row");
         newRow.addEventListener("mouseover", function (event) {
             let target = event.target;
-            target.style.backgroundColor = "green";
+            // 
+            target.style.backgroundColor = getRandomColor();;
         });
         for (let j = 0; j < size; j++) {
             const newDiv = document.createElement("div");
@@ -42,5 +43,17 @@ function createNewContainer() {
     container.setAttribute("id", "container");
 }
 
+function getRandomColor() {
 
+
+    const red = getRandomInt(255);
+    const green = getRandomInt(255);
+    const blue = getRandomInt(255);
+
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 createGrid(64);
